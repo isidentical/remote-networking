@@ -1,0 +1,40 @@
+name: Package Remote Networking
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  package-linux:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Package Application
+      uses: JackMcKew/pyinstaller-action-linux@main
+      with:
+        path: .
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: remote-networking
+        path: src/dist/linux
+
+  package-windows:
+    # The Windows builds actually happen on a docker image
+    # with WINE, so it doesn't matter which OS we use.
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Package Application
+      uses: JackMcKew/pyinstaller-action-windows@main
+      with:
+        path: src
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: remote-networking.exe
+        path: src/dist/windows
