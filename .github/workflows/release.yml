@@ -18,7 +18,7 @@ jobs:
 
     - uses: actions/upload-artifact@v2
       with:
-        name: remote-networking
+        name: linux-remote-networking
         path: dist/linux/remote_networking
 
   package-windows:
@@ -36,7 +36,7 @@ jobs:
 
     - uses: actions/upload-artifact@v2
       with:
-        name: remote-networking.exe
+        name: windows-remote-networking.exe
         path: dist/windows/remote_networking.exe
 
   package-osx:
@@ -57,5 +57,5 @@ jobs:
 
     - uses: actions/upload-artifact@v2
       with:
-        name: remote-networking.exe
+        name: mac-remote-networking
         path: dist/remote_networking
