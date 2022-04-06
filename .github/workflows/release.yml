@@ -19,7 +19,7 @@ jobs:
     - uses: actions/upload-artifact@v2
       with:
         name: remote-networking
-        path: dist/linux
+        path: dist/linux/remote_networking
 
   package-windows:
     # The Windows builds actually happen on a docker image
@@ -37,4 +37,25 @@ jobs:
     - uses: actions/upload-artifact@v2
       with:
         name: remote-networking.exe
-        path: dist/windows
+        path: dist/windows/remote_networking.exe
+
+  package-osx:
+    runs-on: macos-10.15
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: 3.9
+
+    - name: Package Application
+      run: |
+         pip install pyinstaller requests
+         pyinstaller -y remote_networking.spec
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: remote-networking.exe
+        path: dist/remote_networking
