@@ -32,3 +32,7 @@ def main():
             }
 
         server.serve_forever()
+
+
+if __name__ == '__main__':
+    main()
