@@ -52,7 +52,8 @@ jobs:
 
     - name: Package Application
       run: |
-         pip install pyinstaller requests
+         pip install pyinstaller
+         pip install -r requirements.txt
          pyinstaller -y remote_networking.spec
 
     - uses: actions/upload-artifact@v2
